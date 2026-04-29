@@ -1,15 +1,23 @@
 "use client";
 
-import type { LucideIcon } from "lucide-react";
+import { Calendar, Star, ThumbsUp, MapPin, type LucideIcon } from "lucide-react";
 
 type NeonColor = "magenta" | "cyan" | "blue" | "gold" | "orange" | "yellow";
+type IconName = "calendar" | "map-pin" | "thumbs-up" | "star";
 
 interface LinkButtonProps {
   title: string;
   href: string;
-  icon: LucideIcon;
+  iconName: IconName;
   color: NeonColor;
 }
+
+const iconMap: Record<IconName, LucideIcon> = {
+  calendar: Calendar,
+  "map-pin": MapPin,
+  "thumbs-up": ThumbsUp,
+  star: Star,
+};
 
 const colorStyles: Record<NeonColor, { border: string; glow: string; icon: string }> = {
   magenta: {
@@ -44,8 +52,9 @@ const colorStyles: Record<NeonColor, { border: string; glow: string; icon: strin
   },
 };
 
-export function LinkButton({ title, href, icon: Icon, color }: LinkButtonProps) {
+export function LinkButton({ title, href, iconName, color }: LinkButtonProps) {
   const styles = colorStyles[color];
+  const Icon = iconMap[iconName];
 
   return (
     <a

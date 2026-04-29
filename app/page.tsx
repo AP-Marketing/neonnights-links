@@ -1,29 +1,28 @@
 import { LinkButton } from "@/components/link-button";
-import { Calendar, Star, ThumbsUp, MapPin } from "lucide-react";
 
 const links = [
   {
     title: "Reserve Now",
     href: "https://forms.gle/L2HAnfeNrXTKkHJn9",
-    icon: Calendar,
+    iconName: "calendar" as const,
     color: "magenta" as const,
   },
   {
     title: "Trip Advisor",
     href: "https://www.tripadvisor.com.ph/Attraction_Review-g298450-d26242465-Reviews-Neon_Nights_Bar_Club-Makati_Metro_Manila_Luzon.html",
-    icon: MapPin,
+    iconName: "map-pin" as const,
     color: "cyan" as const,
   },
   {
     title: "FB Reviews",
     href: "https://www.facebook.com/neonnightsbarclub/reviews/?id=100075933767633&sk=reviews",
-    icon: ThumbsUp,
+    iconName: "thumbs-up" as const,
     color: "blue" as const,
   },
   {
     title: "Google Reviews",
     href: "https://g.page/r/CZnQ9--WEbraEAE/review",
-    icon: Star,
+    iconName: "star" as const,
     color: "gold" as const,
   },
 ];
@@ -49,7 +48,7 @@ export default function Home() {
               key={link.title}
               title={link.title}
               href={link.href}
-              icon={link.icon}
+              iconName={link.iconName}
               color={link.color}
             />
           ))}
