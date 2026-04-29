@@ -1,15 +1,23 @@
 "use client";
 
-import type { LucideIcon } from "lucide-react";
+import { Calendar, Star, ThumbsUp, MapPin, type LucideIcon } from "lucide-react";
 
 type NeonColor = "magenta" | "cyan" | "blue" | "gold" | "orange" | "yellow";
+type IconName = "calendar" | "map-pin" | "thumbs-up" | "star";
 
 interface LinkButtonProps {
   title: string;
   href: string;
-  icon: LucideIcon;
+  iconName: IconName;
   color: NeonColor;
 }
+
+const iconMap: Record<IconName, LucideIcon> = {
+  calendar: Calendar,
+  "map-pin": MapPin,
+  "thumbs-up": ThumbsUp,
+  star: Star,
+};
 
 const colorStyles: Record<NeonColor, { border: string; glow: string; icon: string }> = {
   magenta: {
@@ -44,8 +52,9 @@ const colorStyles: Record<NeonColor, { border: string; glow: string; icon: strin
   },
 };
 
-export function LinkButton({ title, href, icon: Icon, color }: LinkButtonProps) {
+export function LinkButton({ title, href, iconName, color }: LinkButtonProps) {
   const styles = colorStyles[color];
+  const Icon = iconMap[iconName];
 
   return (
     <a
@@ -53,21 +62,23 @@ export function LinkButton({ title, href, icon: Icon, color }: LinkButtonProps) 
       target="_blank"
       rel="noopener noreferrer"
       className={`
-        group flex aspect-square flex-col items-center justify-center gap-3
-        rounded-2xl border-2 bg-muted/30 p-4
+        group flex aspect-square flex-col items-center justify-center
+        rounded-2xl border-2 bg-muted/30 backdrop-blur-sm
         transition-all duration-300 ease-out
         active:scale-95
         ${styles.border}
         ${styles.glow}
       `}
     >
-      <Icon
-        className={`h-8 w-8 transition-transform duration-300 group-hover:scale-110 ${styles.icon}`}
-        strokeWidth={1.5}
-      />
-      <span className="text-center text-sm font-semibold leading-tight text-foreground">
-        {title}
-      </span>
+      <div className="flex flex-col items-center justify-center gap-3">
+        <Icon
+          className={`h-10 w-10 transition-transform duration-300 group-hover:scale-110 ${styles.icon}`}
+          strokeWidth={1.5}
+        />
+        <span className="text-center text-sm font-semibold leading-tight text-foreground">
+          {title}
+        </span>
+      </div>
     </a>
   );
 }
