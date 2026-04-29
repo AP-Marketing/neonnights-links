@@ -1,5 +1,5 @@
 import { LinkButton } from "@/components/link-button";
-import { Calendar, Star, Facebook, MapPin } from "lucide-react";
+import { Calendar, Star, ThumbsUp, MapPin } from "lucide-react";
 
 const links = [
   {
@@ -17,7 +17,7 @@ const links = [
   {
     title: "FB Reviews",
     href: "https://www.facebook.com/neonnightsbarclub/reviews/?id=100075933767633&sk=reviews",
-    icon: Facebook,
+    icon: ThumbsUp,
     color: "blue" as const,
   },
   {
