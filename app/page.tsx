@@ -29,8 +29,14 @@ const links = [
 
 export default function Home() {
   return (
-    <div className="flex min-h-dvh flex-col items-center bg-background px-4 py-8 sm:py-12">
-      <main className="flex w-full max-w-md flex-col items-center gap-8">
+    <div className="relative flex min-h-dvh flex-col items-center bg-background px-4 py-8 sm:py-12">
+      {/* Subtle neon gradient background */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -left-1/4 -top-1/4 h-96 w-96 rounded-full bg-neon-purple/20 blur-3xl" />
+        <div className="absolute -bottom-1/4 -right-1/4 h-96 w-96 rounded-full bg-neon-magenta/15 blur-3xl" />
+        <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-neon-cyan/10 blur-3xl" />
+      </div>
+      <main className="relative z-10 flex w-full max-w-md flex-col items-center gap-8">
         {/* Logo / Brand Header */}
         <header className="flex flex-col items-center gap-3 text-center">
           <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
